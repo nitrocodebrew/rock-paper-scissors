@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Rock, Paper, Scissors!</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The classic hand gesture game, in digital format.">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://kit.fontawesome.com/09f4f047f5.js" crossorigin="anonymous"></script>
+    <script src="js/app.js" defer></script>
+
+</head>
+<body>
+    <main class="gameboard">
+        <div class="container">
+            <h1>Rock, Paper, Scissors</h1>
+
+            <div class="game-stats">
+                <dl>
+                    <div class="game-stats-column">
+                        <dt>Match</dt>
+                        <dd class="match-counter">0</dd>
+                    </div>
+                    <div class="game-stats-column">
+                        <dt>You</dt>
+                        <dd class="user-score">0</dd>
+                    </div>
+                    <div class="game-stats-column">
+                        <dt>CPU</dt>
+                        <dd class="computer-score">0</dd>
+                    </div>
+                </dl>
+
+                <div class="game-status">
+                    <p class="status-message">Choose rock, paper, or scissors to get started!</p>
+                </div>
+            </div>
+
+            <h2>Which will it be?</h2>
+            <p>Make a selection.</p>
+
+            <div class="game-controllers">
+                <ul>
+                    <li>
+                        <button type="button" class="rock-btn" data-play-selection="rock">
+                            <i class="fa-solid fa-hand-fist"></i>
+                            <span>Rock</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="paper-btn" data-play-selection="paper">
+                            <i class="fa-solid fa-hand"></i>
+                            <span>Paper</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="scissors-btn" data-play-selection="scissors">
+                            <i class="fa-solid fa-hand-scissors"></i>
+                            <span>Scissors</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="game-source-code">
+                <p>
+                    The source code for this project can be found on <a href="https://github.com/nitrocodebrew/rock-paper-scissors" class="github-repo-link" title="View the GitHub repository" target="_blank" rel="noopener noreferrer">GitHub</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
