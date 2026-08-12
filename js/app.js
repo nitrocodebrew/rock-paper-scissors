@@ -31,6 +31,21 @@ const game = {
     },
 };
 
+const createHtmlElement = (type, parentElement, attrsProps = {}) => {
+    const htmlElement = document.createElement(type);
+
+    for(const [key, value] of Object.entries(attrsProps)) {
+        if(key in htmlElement) {
+            htmlElement[key] = value;
+        }
+        else {
+            htmlElement.setAttribute(key, value);
+        }
+    }
+
+    return parentElement.appendChild(htmlElement);
+};
+
 const updateUI = (target, value) => {
     if(target in UI) {
         UI[target].textContent = value;
@@ -53,6 +68,111 @@ const trackComputerScore = () => {
 };
 
 const updateStatusMessage = message => updateUI('statusMessage', message);
+
+const renderMatchHistory = modalContent => {
+    createHtmlElement('h4', modalContent, { textContent: 'Match History', });
+    
+    const matchHistoryList = createHtmlElement('ol', modalContent);
+    const currentGame = game.matchHistory;
+
+    let i = 0;
+    while(i < currentGame.length) {
+        const { userSelection, computerSelection, winner } = currentGame[i];
+        
+        const renderIcon = result => {
+            switch(result) {
+                case 'rock':
+                    return '<i class="fa-solid fa-hand-fist"></i>';
+                case 'paper':
+                    return '<i class="fa-solid fa-hand"></i>';
+                case 'scissors':
+                    return '<i class="fa-solid fa-hand-scissors"></i>';
+                case 'user':
+                    return '<i class="fa-solid fa-award"></i>';
+                case 'computer':
+                    return '<i class="fa-solid fa-computer"></i>';
+                default:
+                    return '<i class="match-history-tied">&#8212;</i>';
+            }
+        };
+
+        const historyResult = createHtmlElement('li', matchHistoryList);
+
+        createHtmlElement(
+            'span',
+            historyResult,
+            {
+                innerHTML: `${renderIcon(userSelection)} vs ${renderIcon(computerSelection)}`,
+            }
+        );
+
+        createHtmlElement(
+            'span',
+            historyResult,
+            {
+                innerHTML: `${renderIcon(winner)}`,
+            }
+        );
+        i++;
+    }
+};
+
+const resetGameStats = () => {
+    game.match = 0;
+    updateUI('matchCounter', game.match);
+
+    game.user = 0;
+    updateUI('userScore', game.user);
+
+    game.computer = 0;
+    updateUI('computerScore', game.computer);
+
+    game.matchHistory = [];
+
+    updateStatusMessage('Choose rock, paper, or scissors to get started!');
+};
+
+const endGame = finalMatchResult => {
+    const modalWindow = createHtmlElement('dialog', $('body'), { id: 'modal', });
+    const modalContent = createHtmlElement('div', modalWindow, { className: 'modal-content', });
+
+    let winningResult;
+    if(game.user > game.computer) {
+        winningResult = `Game over! You win the game ${game.user} - ${game.computer}.`;
+    }
+    else if(game.computer > game.user) {
+        winningResult = `Game over! Computer won the game ${game.computer} - ${game.user}.`;
+    }
+    else {
+        winningResult = 'Game over! It\'s a tie.';
+    }
+
+    createHtmlElement('h3', modalContent, { textContent: winningResult, });
+
+    renderMatchHistory(modalContent);
+    
+    const closeModal = createHtmlElement(
+        'button',
+        modalContent,
+        {
+            id: 'close-modal',
+            type: 'button',
+            innerHTML: 'Start New Game <i class="fa fa-gamepad"></i>',
+        }
+    );
+
+    const exitModal = () => {
+        modalWindow.close();
+        modalWindow.remove();
+    };
+
+    closeModal.addEventListener('click', () => {
+        exitModal();
+        resetGameStats();
+    });
+
+    modalWindow.showModal();
+};
 
 const getComputerSelection = () => {
     const randomIndex = Math.floor(Math.random() * game.selections.length);
@@ -112,6 +232,16 @@ const playMatch = userSelection => {
     }
 
     updateStatusMessage(`${result} ${opponentSelection}`);
+
+    game.matchHistory.push({
+        userSelection,
+        computerSelection,
+        winner,
+    });
+
+    if(game.match === 5) {
+        endGame(`${result} ${opponentSelection}`);
+    }
 };
 
 const initGame = () => {
