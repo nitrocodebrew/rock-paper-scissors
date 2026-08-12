@@ -137,8 +137,10 @@ const endGame = finalMatchResult => {
     const modalContent = createHtmlElement('div', modalWindow, { className: 'modal-content', });
 
     let winningResult;
+    let userWon = false;
     if(game.user > game.computer) {
         winningResult = `Game over! You win the game ${game.user} - ${game.computer}.`;
+        userWon = true;
     }
     else if(game.computer > game.user) {
         winningResult = `Game over! Computer won the game ${game.computer} - ${game.user}.`;
@@ -148,6 +150,17 @@ const endGame = finalMatchResult => {
     }
 
     createHtmlElement('h3', modalContent, { textContent: winningResult, });
+
+    if(userWon) {
+        createHtmlElement (
+            'div', 
+            modalContent, 
+            { 
+                innerHTML: '<i class="fa-solid fa-trophy"></i>',
+                className: 'trophy-icon', 
+            }
+        );
+    }
 
     renderMatchHistory(modalContent);
     
