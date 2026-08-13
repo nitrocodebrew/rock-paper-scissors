@@ -132,12 +132,13 @@ const resetGameStats = () => {
     updateStatusMessage('Choose rock, paper, or scissors to get started!');
 };
 
-const endGame = finalMatchResult => {
+const endGame = () => {
     const modalWindow = createHtmlElement('dialog', $('body'), { id: 'modal', });
     const modalContent = createHtmlElement('div', modalWindow, { className: 'modal-content', });
 
     let winningResult;
     let userWon = false;
+
     if(game.user > game.computer) {
         winningResult = `Game over! You win the game ${game.user} - ${game.computer}.`;
         userWon = true;
@@ -253,7 +254,7 @@ const playMatch = userSelection => {
     });
 
     if(game.match === 5) {
-        endGame(`${result} ${opponentSelection}`);
+        setTimeout(endGame, 1000);
     }
 };
 
