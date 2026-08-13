@@ -178,6 +178,7 @@ const endGame = () => {
     const exitModal = () => {
         modalWindow.close();
         modalWindow.remove();
+        toggleButtonDisabledState(false);
     };
 
     closeModal.addEventListener('click', () => {
@@ -186,6 +187,12 @@ const endGame = () => {
     });
 
     modalWindow.showModal();
+};
+
+const toggleButtonDisabledState = (disabledState = true) => {
+    UI.controllers.forEach(btn => {
+        btn.disabled = disabledState;
+    });
 };
 
 const getComputerSelection = () => {
@@ -254,6 +261,7 @@ const playMatch = userSelection => {
     });
 
     if(game.match === 5) {
+        toggleButtonDisabledState();
         setTimeout(endGame, 1000);
     }
 };
