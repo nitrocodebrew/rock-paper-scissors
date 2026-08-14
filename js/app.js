@@ -134,7 +134,7 @@ const resetGameStats = () => {
 
 const endGame = () => {
     const modalWindow = createHtmlElement('dialog', $('body'), { id: 'modal', });
-    const modalContent = createHtmlElement('div', modalWindow, { className: 'modal-content', });
+    const modalContent = createHtmlElement('div', modalWindow, { className: 'modal-content container', });
 
     let winningResult;
     let userWon = false;
