@@ -54,6 +54,10 @@ h1, h2, h3, h4 {
     color: var(--charcoal);
 }
 
+ul {
+    list-style: none;
+}
+
 p {
     margin: 1.5rem 0;
     padding: 0.25rem;
@@ -123,3 +127,51 @@ button {
     color: var(--snow);
 }
 
+.rock-btn i, .paper-btn i, .scissors-btn i,
+.rock-btn span, .paper-btn span, .scissors-btn span {
+    display: block;
+    transition: all 0.35s ease-in-out 0.15s;
+}
+
+.rock-btn i, .paper-btn i, .scissors-btn i {
+    font-size: 3rem;
+    text-shadow: 2px 2px 0px var(--concrete);
+    color: var(--matcha);
+}
+
+.rock-btn:hover i, .paper-btn:hover i, .scissors-btn:hover i {
+    text-shadow: 2px 2px 0 var(--snow);
+    color: var(--matcha-highlight);
+}
+
+.rock-btn:hover i, .paper-btn:hover i {
+    transform: rotate(90deg);
+}
+
+.scissors-btn i {
+    transform: rotate(90deg);
+}
+
+.scissors-btn:hover i {
+    transform: rotate(180deg);
+}
+
+.rock-btn span, .paper-btn span, .scissors-btn span {
+    margin: 0.5rem 0;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    color: var(--stone);
+}
+
+.rock-btn:hover span, .paper-btn:hover span, .scissors-btn:hover span {
+    color: var(--charcoal);
+}
+
+
+@media (min-width: 768px) {
+    .rock-btn i, .paper-btn i, .scissors-btn i {
+        font-size: 6.5rem;
+    }
+}
