@@ -58,3 +58,21 @@ button {
     font: inherit;
     cursor: pointer;
 }
+
+.container {
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 960px;
+}
+
+.gameboard {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+.game-stats dl, .game-controllers ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+}
