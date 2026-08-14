@@ -54,6 +54,11 @@ h1, h2, h3, h4 {
     color: var(--charcoal);
 }
 
+p {
+    margin: 1.5rem 0;
+    padding: 0.25rem;
+}
+
 button {
     font: inherit;
     cursor: pointer;
@@ -69,6 +74,11 @@ button {
     display: grid;
     place-items: center;
     min-height: 100vh;
+    text-align: center;
+}
+
+.game-stats, .game-controllers {
+    margin: 1.5rem 0;
 }
 
 .game-stats dl, .game-controllers ul {
@@ -76,3 +86,40 @@ button {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5rem;
 }
+
+.game-stats-column {
+    border-radius: 12px;
+    box-shadow: 2px 2px 0 var(--concrete);
+    background-color: var(--snow);
+}
+
+.game-stats-column dt, .game-stats-column dd {
+    padding: 0.25rem 0;
+}
+
+.game-stats-column dt {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: var(--charcoal);
+    color: var(--snow);
+}
+
+.game-stats-column dd {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.status-message {
+    font-size: 0.8rem;
+    border-radius: 12px;
+    box-shadow: 1px 1px 0px var(--concrete);
+    border-left: 3px solid var(--matcha);
+    border-right: 3px solid var(--matcha);
+    background-color: var(--charcoal);
+    color: var(--snow);
+}
+
