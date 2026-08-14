@@ -54,6 +54,14 @@ h1, h2, h3, h4 {
     color: var(--charcoal);
 }
 
+h1 {
+    font-size: clamp(2.75rem, 6vw, 3.25rem);
+}
+
+h2 {
+    font-size: clamp(2.25rem, 7vw, 2.65rem);
+}
+
 ul {
     list-style: none;
 }
@@ -118,6 +126,7 @@ button {
 }
 
 .status-message {
+    padding: 0.25rem 0.5rem;
     font-size: 0.8rem;
     border-radius: 12px;
     box-shadow: 1px 1px 0px var(--concrete);
@@ -169,6 +178,18 @@ button {
     color: var(--charcoal);
 }
 
+.game-source-code {
+    margin: 0.5rem 0;
+}
+
+.game-source-code p {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    box-shadow: 2px 2px 0px var(--concrete);
+    background-color: var(--charcoal);
+    color: var(--concrete);
+}
 
 @media (min-width: 768px) {
     .rock-btn i, .paper-btn i, .scissors-btn i {
