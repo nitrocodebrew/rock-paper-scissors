@@ -52,6 +52,7 @@ h1, h2, h3, h4 {
     font-weight: 700;
     line-height: 1.1;
     color: var(--charcoal);
+    text-align: center;
 }
 
 h1 {
@@ -60,6 +61,14 @@ h1 {
 
 h2 {
     font-size: clamp(2.25rem, 7vw, 2.65rem);
+}
+
+h3 {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+}
+
+h3, h4, .modal-content button {
+    margin: 1.5rem 0;
 }
 
 ul {
@@ -74,6 +83,7 @@ p {
 button {
     font: inherit;
     cursor: pointer;
+    background-color: transparent;
 }
 
 .container {
@@ -140,6 +150,7 @@ button {
 .rock-btn span, .paper-btn span, .scissors-btn span {
     display: block;
     transition: all 0.35s ease-in-out 0.15s;
+    text-align: center;
 }
 
 .rock-btn i, .paper-btn i, .scissors-btn i {
@@ -189,6 +200,78 @@ button {
     box-shadow: 2px 2px 0px var(--concrete);
     background-color: var(--charcoal);
     color: var(--concrete);
+}
+
+#modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+#modal {
+    position: fixed;
+    inset: 0;
+    max-width: none;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background-color: transparent;
+}
+
+.modal-content {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background-color: var(--snow);
+    max-width: 380px;
+}
+
+.trophy-icon {
+    font-size: 2.5rem;
+    display: block;
+    text-align: center;
+    color: var(--matcha);
+}
+
+.modal-content ol {
+    display: block;
+    margin: 0 auto;
+}
+
+.modal-content ol li {
+    font-size: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    color: var(--stone);
+    text-align: center;
+}
+
+.modal-content ol li span:first-child i {
+    color: var(--matcha);
+}
+
+#close-modal {
+    font-size: 1.25rem;
+    font-weight: 700;
+    width: 100%;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 2px 2px 0 var(--concrete);
+    background-color: var(--charcoal);
+    color: var(--stone);
+    transition: all 0.35s ease-in-out 0.15s;
+}
+
+#close-modal:hover {
+    color: var(--snow);
+}
+
+#close-modal:hover i {
+    color: var(--matcha-highlight);
+}
+
+#close-modal i {
+    color: var(--matcha);
 }
 
 @media (min-width: 768px) {
